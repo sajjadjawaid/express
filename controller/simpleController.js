@@ -1,6 +1,6 @@
 
 const record = {};
-
+const simpleService = require('../services/simpleService');
 module.exports = {
     toCheck: (req, res) => {
         const {name, id, city} = req.body;
@@ -14,12 +14,24 @@ module.exports = {
 
     toCreate: (req, res) => {
         const{name, id, city} = req.body;
+        
+        const user = simpleService.createUser({name, id , city});
+        console.log("to checck")
+
         record[id] = {name, id, city};
         console.log(record);
+        if(user.error) {
+            return res.send({
+                error: user.error
+            })
+        }
         return res.send({
-            message: "data is stored",
-            data: {name, id , city}
-        });
+            response: user.response
+        })
+        // return res.send({
+        //     message: "data is stored",
+        //     data: {name, id , city}
+        // });
     },
 
     toDelete : (req, res) =>{
