@@ -12,21 +12,22 @@ module.exports = {
         });
     },
 
-    toCreate: (req, res) => {
-        const{name, id, city} = req.body;
+    toCreate: async (req, res) => {
+        // const{name, id, city} = req.body;
+        const validate = req.body;
         
-        const user = simpleService.createUser({name, id , city});
+        const user = await simpleService.createUser(validate);
         console.log("to checck")
 
-        record[id] = {name, id, city};
-        console.log(record);
+        // record[id] = {name, id, city};
+        // console.log(record);
         if(user.error) {
             return res.send({
                 error: user.error
             })
         }
         return res.send({
-            response: user.response
+            display: user.message
         })
         // return res.send({
         //     message: "data is stored",
