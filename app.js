@@ -19,6 +19,9 @@ var checkoutRouter = require("./routes/rfidCheckOutRouter");
 //for simpleController.js
 var simpleRouter = require('./routes/simpleRouter');
 
+//for validationController.js
+var validationRouter = require('./routes/validationRouter');
+
 
 var app = express();
 
@@ -41,6 +44,8 @@ app.use("/rfid", rfidCheckInRouter );
 app.use("/checkout", checkoutRouter);
 
 app.use('/simple', simpleRouter);
+
+app.use('/validation',validationRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
