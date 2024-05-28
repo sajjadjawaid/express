@@ -25,7 +25,7 @@ users.init({
     timestamps: true,
     paramoid: true,
     tableName: "users",
-    sequelize, //her passed connection of database
+    sequelize, //here passed connection of database
 
 });
 

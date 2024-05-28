@@ -63,5 +63,58 @@ module.exports = {
                 error:error
             }
         }
-    }
+    },
+
+    deleteUser : async (userId) =>{
+        try{
+           const deleteUser = await validationModel.deleteUser(userId);
+           console.log("in service ", deleteUser );
+           if(deleteUser.error || !deleteUser.response){
+            return{
+                error: {
+                  message:  "unable to delete",
+                  error: deleteUser?.error || deleteUser.response,
+                
+            }}
+           }
+            return {
+            
+                response: {
+                    message: "user Delete",
+                    response: deleteUser.response,
+                }
+            }
+        } catch(error){
+            return{
+                error:error
+            }
+        }
+    },
+    
+    updateUser : async (body) =>{
+        try{
+            console.log("in controller updateuser body", body);
+           const updateUser = await validationModel.updateUser({...body});
+           if(updateUser.error || !updateUser.response){
+            return{
+                error: {
+                  message:  "unable to update",
+                  error: updateUser?.error || updateUser.response,
+                
+            }}
+           }
+            return {
+            
+                response: {
+                    message: "user updated",
+                    response: updateUser.response,
+                }
+            }
+        } catch(error){
+            return{
+                error:error
+            }
+        }
+    },
+
 }

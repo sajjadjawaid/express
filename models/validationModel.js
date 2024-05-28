@@ -1,3 +1,4 @@
+const users = require('./definitions/users');
 const {models} = require('./index')
 
 module.exports = {
@@ -68,8 +69,46 @@ module.exports = {
             error: error
         }
        }
-   }
-    
+   },
+
+   deleteUser: async (userId) => {
+    try {
+        console.log("in model", userId);
+        const deleteUser = await models.users.destroy({
+            where: {userID: userId},
+        })
+         return{
+            response: deleteUser,
+         }
+       } catch(error){
+        return{
+            error: error
+        }
+       }
+   },
+
+   updateUser: async ({userId, ...body}) => {
+    try {
+        console.log("in model updateUser", userId);
+        
+        console.log('in body', body);
+        const updateUser = await models.users.update({...body}, 
+            {where: {userID: userId}}
+        )
+
+
+         return{
+            response: updateUser,
+         }
+       } catch(error){
+        return{
+            error: error
+        }
+       }
+   },
+
+
+   
 
 }
 
