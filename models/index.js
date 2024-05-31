@@ -6,6 +6,10 @@ const userHasTask = require("./definitions/userHasTask");
 
 const models = {users, tasks, taskHasUser, userHasTask};
 
+//relation between users and tasks
+users.hasOne(tasks,{foreignKey: "userID"});
+tasks.belongsTo(users,{foreignKey: "userID"});
+
 const db = {};
 
 db.sequelize = sequelize; // new key in db

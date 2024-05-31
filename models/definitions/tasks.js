@@ -1,5 +1,6 @@
 const {Model, DataTypes} = require("sequelize");
 const sequelize = require("../../bin/dbConnection");
+const users = require('./users');
 
 class tasks extends Model {
 
@@ -11,11 +12,27 @@ tasks.init({
         type: DataTypes.STRING(255),
         },
     taskName: {
-        unique: true,
+        
         allowNull: false,
-        type: DataTypes.STRING(34),
+        type: DataTypes.STRING(100),
 
-    } 
+    },
+    taskDescription: {
+        type: DataTypes.TEXT,
+        allowNull : true
+        
+
+    },
+    userID:{
+        type: DataTypes.STRING(255),
+        allowNull: true,
+        references: {
+            model: users,
+            key: "userID"
+
+        }
+    }
+
 }, {
 
     timestamps: true,

@@ -22,6 +22,9 @@ var simpleRouter = require('./routes/simpleRouter');
 //for validationController.js
 var validationRouter = require('./routes/validationRouter');
 
+//for taskController.js
+var taskRouter = require('./routes/taskRouter');
+
 
 var app = express();
 
@@ -46,6 +49,8 @@ app.use("/checkout", checkoutRouter);
 app.use('/simple', simpleRouter);
 
 app.use('/validation',validationRouter);
+
+app.use('/task', taskRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
