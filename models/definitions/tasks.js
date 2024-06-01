@@ -25,7 +25,8 @@ tasks.init({
     },
     userID:{
         type: DataTypes.STRING(255),
-        allowNull: true,
+        allowNull: false,
+        // unique: true, if you want to apply then deleted table from postgres and restart npm again
         references: {
             model: users,
             key: "userID"

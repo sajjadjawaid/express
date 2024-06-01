@@ -22,7 +22,17 @@ module.exports = {
     },
     getAllTasks: async()=>{
         try{
-            const task = await models.tasks.findAll();
+            const task = await models.tasks.findAll({
+                attributes: {
+                    exclude: ["deletedAt", "userID"]
+                },
+                include: {
+                    model: models.users,
+                    attributes: ["userID", "userName"]
+                    
+
+                }
+            });
             return{
                 response: task
             }

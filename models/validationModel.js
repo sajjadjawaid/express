@@ -59,7 +59,13 @@ module.exports = {
 
    getAllUsers: async () =>{
     try {
-        const users = await models.users.findAll();
+        const users = await models.users.findAll({
+            include: {
+                model: models.tasks,
+                attributes: ["taskName", "taskDescription"]
+            }
+        });
+        
         return{
             response: users
         }
