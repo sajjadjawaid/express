@@ -25,6 +25,9 @@ var validationRouter = require('./routes/validationRouter');
 //for taskController.js
 var taskRouter = require('./routes/taskRouter');
 
+//for authController.js
+var authRouter = require('./routes/authRouter');
+
 
 var app = express();
 
@@ -51,6 +54,8 @@ app.use('/simple', simpleRouter);
 app.use('/validation',validationRouter);
 
 app.use('/task', taskRouter);
+
+app.use('/auth', authRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
