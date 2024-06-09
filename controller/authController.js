@@ -16,8 +16,13 @@ module.exports = {
                 error: login.error
             })
         }
+        if (login.message) {
+            return res.send({
+                message: login.message
+            });
+        }
         return res.send({
-            response: login.respone
+            response: login.response
         })
         }catch(error){
             return res.send({

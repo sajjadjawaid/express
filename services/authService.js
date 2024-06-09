@@ -15,7 +15,7 @@ module.exports = {
           }
 
           const isValid = await compare(body.password,  user.response.dataValues.password);
-
+          console.log("is valid ", isValid)
           if(!isValid){
             return {
                 message: "invalid credentials. "
@@ -23,7 +23,7 @@ module.exports = {
           }
 
           return {
-            respone: "logged In."
+            response: "logged In."
           }
 
         }catch(error){
