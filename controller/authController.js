@@ -16,11 +16,18 @@ module.exports = {
                 error: login.error
             })
         }
-        if (login.message) {
-            return res.send({
-                message: login.message
-            });
-        }
+        // if (login.message) {
+        //     return res.send({
+        //         message: login.message
+        //     });
+        // }
+        
+        //store token in cookie
+        res.cookie("auth", login.response.token);
+
+        //now delete the token
+        delete login.response.token;
+
         return res.send({
             response: login.response
         })

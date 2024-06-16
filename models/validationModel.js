@@ -8,6 +8,9 @@ module.exports = {
             console.log("in model get users");
             const user = await models.users.findOne({
                 ...(userID ? {where : {userID: userID}}: {where: {userName: userName}}),
+                attributes: {
+                    exclude: ["createdAt", "updatedAt"]
+                }
             })
             return {
                 response: user
