@@ -11,9 +11,10 @@ module.exports = {
           const user = await validationModel.getUser(false, body.userName);
           if(user.error || !user.response){
             return {
+              error: {
                 message:"User not Found.",
                 error: user?.error || user.response
-            }
+            }}
           }
 
           const isValid = await compare(body.password,  user.response.dataValues.password);
@@ -23,7 +24,7 @@ module.exports = {
          
           if(!isValid){
             return {
-              response: {
+              error: {
                 message: "invalid credentials. ",
                 response: false,
                 token: "undefined"

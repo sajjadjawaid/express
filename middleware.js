@@ -5,7 +5,7 @@ require("dotenv").config();
 module.exports = {
     middleware : async (req, res, next ) => {
         try{
-            console.log(req.cookies);
+            console.log("all cookies: ",req.cookies);
             const token = req.cookies.auth;
             //here we checked if token exists or not
             if(token === "undefined"){

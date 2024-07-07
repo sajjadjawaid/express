@@ -3,7 +3,7 @@ const {validateAndCreate, getAllUsers, deleteUser, updateUser} = require("../con
 const {middleware} = require('../middleware');
 
 route.post('/validateAndCreate', validateAndCreate);
-route.get('/getAllUsers',middleware, getAllUsers);
+route.get('/getAllUsers', getAllUsers);
 route.delete('/deleteUser',deleteUser);
 route.put('/updateUser', updateUser);
 

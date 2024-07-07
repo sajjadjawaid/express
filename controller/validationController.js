@@ -32,8 +32,10 @@ module.exports = {
                 })
             }
             return res.send({
+                response: {
                 message:"user is validated",
                 response: user.response
+                }
             })
 
         }catch (error){

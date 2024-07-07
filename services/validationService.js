@@ -13,8 +13,10 @@ module.exports = {
             console.log("in service before is user");
             if(isUser.error || isUser.response){
                 return{
-                    
+                    error: {
+                    message: "Username already exits!",    
                     error: isUser
+                    }
                 }
             }
             console.log("in service after isUser");
